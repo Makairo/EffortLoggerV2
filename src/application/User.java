@@ -1,29 +1,65 @@
 package application;
 
+import java.util.ArrayList;
+
 public class User
 {
-	private String name;
+	private String username;
+	private String password;
 	private int ID;
 	private int rank;
 	
+	//Standin database instead of SQL.
+	private static ArrayList<User> database = new ArrayList<User>();
 	
+	//toString override
+	public String toString()
+	{
+		return "Username: " + username 
+			 + "; Password: " + password
+			 + "; User ID: " + ID;
+	}
+	
+	//Access for the temporary database.
+	public static int findUser(String inUser)
+	{
+		for(int i = 0; i < database.size() ; i++)
+		{
+			if(database.get(i).username.equals(inUser))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	//Username restrictions:
+	// 4 - 32 characters
+	// Upper and Lower case + Numeric + "." + "-" + "_"
+	// First character must be alphanumeric
+	// Special chars must be followed by alphanumeric
 	User()
 	{
-		name = "NULL USER";
+		username = "NULL USER";
 		ID = 0000000;
 		rank = 0;
 	}
 	
 	User(String nName, int nID, int nRank)
 	{
-		name = nName;
+		username = nName;
 		ID = nID;
 		rank = nRank;
 	}
 	
 	public String getName()
 	{
-		return this.name;
+		return this.username;
+	}
+	
+	public String getPassword()
+	{
+		return this.password;
 	}
 	
 	public int getID()
@@ -38,7 +74,12 @@ public class User
 	
 	public void setName(String nName)
 	{
-		this.name = nName;
+		this.username = nName;
+	}
+	
+	public void setPassword(String nPassword)
+	{
+		this.password = nPassword;
 	}
 	
 	public void setID(int nID)
