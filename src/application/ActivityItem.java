@@ -130,7 +130,7 @@ public class SQLInjectionHandling {
 		//since we are not yet committed to an SQL database, this is
 		//a non-ASCII character checker for any string input
 		boolean flag = true;
-		//if string is not null
+		//if string is null, it's still true as there's no non-ascii chars inside.
 		if (s != null) {
 			for (int i = 0; i < s.length(); i++) {
 				char c = s.charAt(i);
