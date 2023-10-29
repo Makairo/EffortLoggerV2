@@ -126,7 +126,7 @@ public class SQLInjectionHandling {
 
 	}
 
-		public static Boolean ASCIICheck(String s) {
+public static Boolean ASCIICheck(String s) {
 		//since we are not yet committed to an SQL database, this is
 		//a non-ASCII character checker for any string input
 		boolean flag = true;
