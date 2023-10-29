@@ -45,4 +45,4 @@ public class riskReductionHandling
 	{
 		 inUser.setName(codeName);
 	}
-}
+
