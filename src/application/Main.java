@@ -1,5 +1,8 @@
 package application;
 	
+import java.io.Console;
+import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -30,13 +33,56 @@ public class Main extends Application
 	
 	public static void main(String[] args) 
 	{
+		Scanner scanner = new Scanner(System.in);
+		Boolean loggedin = false;
+		Boolean exit = false;
+		String userInput;
+		int index;
+		
+		
 		User.database.add(new User("Jerry","password", 7701, 5));
 		User.database.add(new User("Alice","password", 7702, 5));
 		User.database.add(new User("Kyle","password", 7703, 5));
 		User.database.add(new User("Andrew", "Bandit", 7704, 5));
 		User.database.add(new User("Gavin","password", 7705, 5));
 		
+		
+		
 		//Login Screen
+		System.out.println("Welcome to EffortLogger!");
+		System.out.println("Please Login: ");
+		while(!loggedin && !exit)
+		{
+			System.out.println("Username (-1 to quit): ");
+			userInput = scanner.nextLine();
+			
+			if(userInput.equals("-1"))
+			{
+				exit = true;
+				return;
+			}
+			
+			index = User.findUser(userInput);
+			if(index == -1)
+			{
+				System.out.println("Invalid Username");
+				continue;
+			}
+			
+			System.out.println("Password: ");
+			userInput = scanner.nextLine();
+			if(!userInput.equals(User.database.get(index).getPassword()))
+			{
+				System.out.println("Invalid Password");
+				continue;
+			}
+			
+			loggedin = true;
+			
+			
+		}
+		
+		
 		
 		//EffortLogger v Planning Poker Selection
 		
