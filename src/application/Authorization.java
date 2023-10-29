@@ -4,18 +4,6 @@ public class Authorization
 {
 		//Ensuring and Requiring Authentication: Andrew
 		//Helper method
-		public static int RequestRank(User inUser)
-		{
-			return inUser.getRank();
-		}
-		
-		//Helper method
-		public static int RequestId(User inUser)
-		{
-			return inUser.getID();
-		}
-		
-		//Helper method
 		public static Boolean AssertRank(User inUser, int rank) 
 		{
 			return inUser.getRank() == rank;
