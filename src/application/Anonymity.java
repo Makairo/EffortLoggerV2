@@ -22,15 +22,15 @@ public class Anonymity {
 
     // This function processes the Users in the data base
     
-    public static void processUser(User user) {
-        System.out.println("Original Name: " + user.getName());
-        setCodeName(user);
-        System.out.println("Updated Name: " + user.getName());
+    public static void processUser(User inUser) {
+        System.out.println("Original Name: " + inUser.getName());
+        setCodeName(inUser);
+        System.out.println("Updated Name: " + inUser.getName());
     }
 
-    public static void generate(User user) {
+    public static void generate(User inUser) {
         String codeName = generateCodeName();
-        user.setName(codeName);
+        inUser.setName(codeName);
     }
 
     // This method generates a random code name.
@@ -42,9 +42,9 @@ public class Anonymity {
     }
 
 // Check if the name has been changed to a code name.
-    public static boolean isNameChanged(User user) {
+    public static boolean isNameChanged(User inUser) {
     
-        boolean nameChanged = !user.getName().equals(requestName(user));
+        boolean nameChanged = !inUser.getName().equals(requestName(inUser));
         if (nameChanged) {
             System.out.println("Name Changed Successfully");
         } else {
