@@ -35,5 +35,14 @@ public class riskReductionHandling
 	}
 	
 	//Ensuring Anonymity: Kyle
+	
+	public static String RequestName(User inUser)
+	{
+		return inUser.getName();
+	}
 
+	public static void setCodeName(User inUser, int codeName)
+	{
+		 inUser.setName(codeName);
+	}
 }
