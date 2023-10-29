@@ -31,7 +31,28 @@ public class riskReductionHandling
 	
 	public static Boolean AssertUser(User inUser, int rank, int ID)
 	{
-		return false;
+		if(!AssertID(inUser, ID) || !AssertRank(inUser, rank))
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public static Boolean Login(String username, String password)
+	{
+		int index = User.findUser(username);
+		if(index == -1)
+		{
+			return false;
+		}
+		
+		if(!password.equals(User.database.get(index).getPassword()))
+		{
+			return false;
+		}
+		
+		return true;
+		
 	}
 	
 	//Ensuring Anonymity: Kyle
@@ -41,8 +62,10 @@ public class riskReductionHandling
 		return inUser.getName();
 	}
 
-	public static void setCodeName(User inUser, int codeName)
+	public static void setCodeName(User inUser, String codeName)
 	{
 		 inUser.setName(codeName);
 	}
+	
+}
 

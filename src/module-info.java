@@ -5,4 +5,5 @@ module EffortLoggerV2 {
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires junit;
+	requires javafx.controls;
 }
