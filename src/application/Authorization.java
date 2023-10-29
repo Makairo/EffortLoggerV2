@@ -2,7 +2,7 @@ package application;
 
 public class Authorization 
 {
-	//Ensuring and Requiring Authentication: Andrew
+		//Ensuring and Requiring Authentication: Andrew
 		//Helper method
 		public static int RequestRank(User inUser)
 		{

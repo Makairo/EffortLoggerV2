@@ -59,6 +59,7 @@ public class SceneControllerPP implements Initializable
 		stage.show();	
 	}
 	
+	//Create item button handler
 	public void createNewItem(ActionEvent event) throws IOException
 	{
 		String input = newItemBox.getText();
@@ -67,6 +68,7 @@ public class SceneControllerPP implements Initializable
 		updateList();
 	}
 	
+	//Push New Estimate button handler
 	public void pushNewEstimate(ActionEvent event) throws IOException
 	{
 		setActiveItem();
@@ -84,6 +86,7 @@ public class SceneControllerPP implements Initializable
 		showActivityItem();
 	}
 	
+	//Helper method for updating the dropdown menu.
 	public void updateList() 
 	{
 		if(ActivityItem.PPDatabase.isEmpty())
@@ -98,9 +101,13 @@ public class SceneControllerPP implements Initializable
 		
 	}
 	
+	//Helper method to display values associated with the Planning Poker Card.
 	public void showActivityItem() throws IOException
 	{
+		//Get the Active Item to be displayed.
 		setActiveItem();
+		
+		//Conversions, set values.
 		String newHigh = Integer.toString(ActiveItem.getCard().getHighCard());
 		String newLow = Integer.toString(ActiveItem.getCard().getLowCard());
 		String newAvg = Double.toString(ActiveItem.getCard().getAverage());
@@ -117,32 +124,38 @@ public class SceneControllerPP implements Initializable
 		
 	}
 	
+	//Helper method to display values associated with the Planning Poker Card.
+	//Called by the "Show" button
 	public void showActivityItem(ActionEvent event) throws IOException
 	{
+		//Get the Active Item to be displayed.
 		setActiveItem();
+				
+		//Conversions, set values.
 		String newHigh = Integer.toString(ActiveItem.getCard().getHighCard());
 		String newLow = Integer.toString(ActiveItem.getCard().getLowCard());
 		String newAvg = Double.toString(ActiveItem.getCard().getAverage());
 		highCard.setText(newHigh);
 		lowCard.setText(newLow);
 		estimate.setText(newAvg);
-			
+					
 		//Planning Poker Card DONE
-			
+					
 		//Start on Criteria...
-		criteriaList.setText("<No current criteria>");
 		String newCriteria = ActiveItem.getCriteria();
 		System.out.println(newCriteria);
 		criteriaList.setText(newCriteria);
 		
 	}
 	
+	//Helper method to get the current selected item.
 	private void setActiveItem()
 	{
 		int index = ActivityItem.findItem(activitySelector.getValue());
 		System.out.println(index);
 		if(index == -1)
 		{
+			//Set to null if there is no item in list.
 			ActiveItem = null;
 		}
 		else

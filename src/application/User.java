@@ -55,6 +55,7 @@ public class User
 		rank = nRank;
 	}
 	
+	//Get and set methods...
 	public String getName()
 	{
 		return this.username;

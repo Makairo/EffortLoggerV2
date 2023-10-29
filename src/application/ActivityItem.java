@@ -34,6 +34,7 @@ public class ActivityItem
 		card = new PokerCard();
 	}
 	
+	//Add new estimate, update the average and planning poker card.
 	public void AddEstimate(int input)
 	{
 		estimate.add(input);
@@ -41,11 +42,13 @@ public class ActivityItem
 		updateCard();
 	}
 	
+	//Add criteria.
 	public void AddCriteria(String input)
 	{
 		criteria.add(input);
 	}
 	
+	//Getters and setters.
 	public String getName()
 	{
 		return this.name;
@@ -61,6 +64,13 @@ public class ActivityItem
 		return this.estimate;
 	}
 	
+	public PokerCard getCard()
+	{
+		return this.card;
+	}
+	
+	//Returns string value of all the criteria associated with one element in the list.
+	//If empty, returns "No criteria listed."
 	public String getCriteria()
 	{
 		String returnVal = "";
@@ -76,6 +86,7 @@ public class ActivityItem
 		return returnVal;
 	}
 	
+	//Update the values on the planning poker card
 	public void updateCard()
 	{
 		int high, low;
@@ -103,11 +114,9 @@ public class ActivityItem
 		card.setAverage(average);
 	}
 	
-	public PokerCard getCard()
-	{
-		return this.card;
-	}
-	
+
+	//Returns the index of the first item in the list to match the given name(string).
+	//Returns -1 if not found.
 	public static int findItem(String input)
 	{
 		int index = -1;
@@ -128,6 +137,7 @@ public class ActivityItem
 		return index;
 	}
 	
+	//Helper method to calculate the average.
 	private double setAvg()
 	{
 		double sum = 0.0;

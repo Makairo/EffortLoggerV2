@@ -33,7 +33,6 @@ public class SceneController
 	public Label loginLabel;
 
 	//Handles the login process.
-	//Collaborators: Andrew Hejl
 	public void switchToMainScreen(ActionEvent event) throws IOException
 	{
 		try
@@ -62,7 +61,6 @@ public class SceneController
 	}
 	
 	//Handles the logout process.
-	//Collaborators: Andrew Hejl
 	public void switchToLoginScreen(ActionEvent event) throws IOException
 	{
 		//Simply reloads login page.
@@ -73,6 +71,7 @@ public class SceneController
 		stage.show();
 	}
 	
+	//Handles transition to PlanningPoker Pane
 	public void switchToPlanningPoker(ActionEvent event) throws IOException
 	{
 		//Simply reloads login page.
