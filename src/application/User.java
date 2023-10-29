@@ -95,7 +95,7 @@ public class User
 	
 	public void setCodeName(String codeName)
 	{
-		this.name = codeName;
+		this.username = codeName;
 	}
 
 	
