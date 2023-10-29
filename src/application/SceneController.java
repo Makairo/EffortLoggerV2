@@ -41,7 +41,7 @@ public class SceneController
 			String username = usernameField.getText();
 			String password = passwordField.getText();
 			//Login
-			if(riskReductionHandling.Login(username, password))
+			if(Authorization.Login(username, password))
 			{
 				Parent root = FXMLLoader.load(getClass().getResource("Main.FXML"));
 				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
