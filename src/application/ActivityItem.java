@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ActivityItem 
 {
-	private int ID;
+	private String name;
 	private double average;
 	private ArrayList<Integer> estimate;
 	private ArrayList<String> criteria;
@@ -18,15 +18,15 @@ public class ActivityItem
 	
 	ActivityItem()
 	{
-		ID = 0000000;
+		name = "empty item";
 		average = 0.0;
 		estimate = new ArrayList<Integer>();
 		criteria = new ArrayList<String>();
 	}
 	
-	ActivityItem(int nID)
+	ActivityItem(String inName)
 	{
-		ID = nID;
+		name = inName;
 		average = 0.0;
 		estimate = new ArrayList<Integer>();
 		criteria = new ArrayList<String>();
@@ -43,9 +43,9 @@ public class ActivityItem
 		criteria.add(input);
 	}
 	
-	public int getID()
+	public String getName()
 	{
-		return this.ID;
+		return this.name;
 	}
 	
 	public double getAverage()

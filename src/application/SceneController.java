@@ -1,4 +1,5 @@
 /*Controller for EffortLogger JavaFX.
+ * This controls the Login.FXML and Main.FXML files.
  * Collaborators: Andrew Hejl
  * 		-Initial commit 
  * */
@@ -66,6 +67,16 @@ public class SceneController
 	{
 		//Simply reloads login page.
 		Parent root = FXMLLoader.load(getClass().getResource("Login.FXML"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchToPlanningPoker(ActionEvent event) throws IOException
+	{
+		//Simply reloads login page.
+		Parent root = FXMLLoader.load(getClass().getResource("PlanningPoker.FXML"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
