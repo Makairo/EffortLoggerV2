@@ -10,7 +10,7 @@ public class User
 	private int rank;
 	
 	//Standin database instead of SQL.
-	private static ArrayList<User> database = new ArrayList<User>();
+	public static ArrayList<User> database = new ArrayList<User>();
 	
 	//toString override
 	public String toString()
@@ -45,9 +45,10 @@ public class User
 		rank = 0;
 	}
 	
-	User(String nName, int nID, int nRank)
+	User(String nName, String nPassword, int nID, int nRank)
 	{
 		username = nName;
+		password = nPassword;
 		ID = nID;
 		rank = nRank;
 	}
