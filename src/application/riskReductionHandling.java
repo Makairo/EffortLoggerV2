@@ -24,6 +24,16 @@ public class riskReductionHandling
 		return inUser.getRank() == rank;
 	}
 	
+	public static Boolean AssertID(User inUser, int ID)
+	{
+		return inUser.getID() == ID;
+	}
+	
+	public static Boolean AssertUser(User inUser, int rank, int ID)
+	{
+		return false;
+	}
+	
 	//Ensuring Anonymity: Kyle
 
 	private TextField nameInput;
