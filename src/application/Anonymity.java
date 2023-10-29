@@ -40,4 +40,16 @@ public class Anonymity {
         int codeNumber = rand.nextInt(1000) + 1; // Generate a random number between 1 and 1000
         return "EMP" + codeNumber;
     }
+
+// Check if the name has been changed to a code name.
+    public static boolean isNameChanged(User user) {
+    
+        boolean nameChanged = !user.getName().equals(requestName(user));
+        if (nameChanged) {
+            System.out.println("Name Changed Successfully");
+        } else {
+            System.out.println("Codename not activated!");
+        }
+        return nameChanged;
+    }
 }
