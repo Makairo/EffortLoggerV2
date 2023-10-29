@@ -21,8 +21,8 @@ public class Main extends Application
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/Main.FXML"));
-			Scene scene = new Scene(root,600,400);
+			Parent root = FXMLLoader.load(getClass().getResource("Login.FXML"));
+			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -33,6 +33,10 @@ public class Main extends Application
 	
 	public static void main(String[] args) 
 	{
+		//THIS IS CODE FOR JAVA FX IMPLEMENTATION
+		//UNCOMMENT WHEN READY TO IMPLEMENT
+		launch(args);
+		/*
 		Scanner scanner = new Scanner(System.in);
 		Boolean loggedin = false;
 		Boolean exit = false;
@@ -82,9 +86,26 @@ public class Main extends Application
 			
 		}
 		
-		
-		
 		//EffortLogger v Planning Poker Selection
+		System.out.println("Please select EffortLogger or Planning Poker (-1 to logout): ");
+		userInput = scanner.nextLine();
+		while(loggedin)
+		{
+			if(userInput.equals("-1"))
+			{
+				loggedin = false;
+				return;
+			}
+			if(userInput.equals("EF"))
+			{
+				//EffortLogger
+			}
+			if(userInput.equals("PP"))
+			{
+				//Planning Poker
+			}
+		}
+		
 		
 		//EffortLogger
 		
@@ -94,9 +115,8 @@ public class Main extends Application
 		
 		
 		
-		//THIS IS CODE FOR JAVA FX IMPLEMENTATION
-		//UNCOMMENT WHEN READY TO IMPLEMENT
-		//launch(args);
+		*/
 	}
+	
 	
 }
