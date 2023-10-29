@@ -1,151 +1,142 @@
-//User class for use with EffortLogger and Planning Poker
-//Collaborators: Andrew Hejl
 package application;
 
-import java.util.ArrayList;
+//Jerry Gao
 
-public class ActivityItem 
-{
-	private String name;
-	private double average;
-	private ArrayList<Integer> estimate;
-	private ArrayList<String> criteria;
-	private PokerCard card;
-	
-	//Temporary database to store ActivityItems without SQL.
-	public static ArrayList<ActivityItem> PPDatabase = new ArrayList<ActivityItem>();
-	
-	
-	ActivityItem()
-	{
-		name = "empty item";
-		average = 0.0;
-		estimate = new ArrayList<Integer>();
-		criteria = new ArrayList<String>();
-		card = new PokerCard();
-	}
-	
-	ActivityItem(String inName)
-	{
-		name = inName;
-		average = 0.0;
-		estimate = new ArrayList<Integer>();
-		criteria = new ArrayList<String>();
-		card = new PokerCard();
-	}
-	
-	//Add new estimate, update the average and planning poker card.
-	public void AddEstimate(int input)
-	{
-		estimate.add(input);
-		average = setAvg();
-		updateCard();
-	}
-	
-	//Add criteria.
-	public void AddCriteria(String input)
-	{
-		criteria.add(input);
-	}
-	
-	//Getters and setters.
-	public String getName()
-	{
-		return this.name;
-	}
-	
-	public double getAverage()
-	{
-		return this.average;
-	}
-	
-	public ArrayList<Integer> getEstimates()
-	{
-		return this.estimate;
-	}
-	
-	public PokerCard getCard()
-	{
-		return this.card;
-	}
-	
-	//Returns string value of all the criteria associated with one element in the list.
-	//If empty, returns "No criteria listed."
-	public String getCriteria()
-	{
-		String returnVal = "";
-		if(criteria.isEmpty())
-		{
-			returnVal = "No criteria listed.";
-			return returnVal;
-		}
-		for(int i = 0 ; i < criteria.size() ; i++)
-		{
-			returnVal += "> " + criteria.get(i) + '\n';
-		}
-		return returnVal;
-	}
-	
-	//Update the values on the planning poker card
-	public void updateCard()
-	{
-		int high, low;
-		if(estimate.isEmpty())
-		{
-			return;
-		}
-		
-		//Initially set high and low to first value in list.
-		high = estimate.get(0);
-		low = estimate.get(0);
-		for(int i = 1 ; i < estimate.size() ; i++)
-		{
-			if(estimate.get(i) > high)
-			{
-				high = estimate.get(i);
-			}
-			if(estimate.get(i) < low)
-			{
-				low = estimate.get(i);
-			}
-		}
-		card.setHighCard(high);
-		card.setLowCard(low);
-		card.setAverage(average);
-	}
-	
+//Use Java's PreparedStatement to handle any string inputs
 
-	//Returns the index of the first item in the list to match the given name(string).
-	//Returns -1 if not found.
-	public static int findItem(String input)
+import java.sql.Connection;
+
+import java.sql.DatabaseMetaData;
+
+import java.sql.DriverManager;
+
+import java.sql.ResultSet;
+
+import java.sql.SQLException;
+
+import java.sql.Statement;
+
+import java.sql.PreparedStatement;
+
+public class SQLInjectionHandling {
+
+	/*
+	 * public static String SQLTest(User inUser) throws SQLException {
+	 * 
+	 * Connection conn = null;
+	 * 
+	 * Statement statement = null;
+	 * 
+	 * ResultSet resultSet = null;
+	 * 
+	 * // the following is a test database used so we have the SQL rules,
+	 * 
+	 * // and the url will be changed to the actual one later
+	 * 
+	 * try {
+	 * 
+	 * String url = "jdbc:sqlite::memory:";
+	 * 
+	 * conn = DriverManager.getConnection(url);
+	 * 
+	 * }
+	 * 
+	 * //looking for errors with the connection
+	 * 
+	 * catch (SQLException e) {
+	 * 
+	 * System.out.println(e.getMessage());
+	 * 
+	 * } finally {
+	 * 
+	 * try {
+	 * 
+	 * if (conn != null) {
+	 * 
+	 * conn.close();
+	 * 
+	 * }
+	 * 
+	 * } catch (SQLException ex) {
+	 * 
+	 * System.out.println(ex.getMessage());
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * //created a prepared statement
+	 * 
+	 * String userPass = inUser.getName()+inUser.getPassword();
+	 * 
+	 * PreparedStatement pstmt = conn.prepareStatement(userPass);
+	 * 
+	 * //print out if needed to test
+	 * 
+	 * //System.out.println(pstmt);
+	 * 
+	 * //will convert this function back to PreparedStatement when we have a DB
+	 * 
+	 * return userPass;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * }
+	 * 
+	 */
+
+	// the above will be done when we have a proper SQL DB to cover using Prepared
+	// Statements.
+
+	// For now,the test will simply iterate over string inputs and declare if they
+	// are fit or not
+
+	public static Boolean SQLTestMini(User inUser)
+
 	{
-		int index = -1;
-		if(PPDatabase.isEmpty())
-		{
-			return index;
+
+		boolean flag = true;
+
+		String username = inUser.getName();
+
+		String pwd = inUser.getPassword();
+
+		for (int i = 0; i < username.length(); i++) {
+			char c1 = username.charAt(i);
+			char c2 = pwd.charAt(i);
+			if (c1 == '\'' || c1 == '\"' || c1 == '\\') {
+				flag = false;
+				break;
+			}
+			if (c2 == '\'' || c2 == '\"' || c2 == '\\') {
+				flag = false;
+				break;
+			}
+
 		}
-		for(int i = 0 ; i < PPDatabase.size() ; i++)
-		{
-			if(input.equals(PPDatabase.get(i).getName()))
-			{
-				//Value found, exit and return index.
-				index = i;
-				return index;
+
+		return flag;
+
+	}
+
+	public static Boolean ASCIICheck(String s) {
+		boolean flag = true;
+		if (s != null) {
+			for (int i = 0; i < s.length(); i++) {
+				char c = s.charAt(i);
+				if (c < 0x20 || c > 0x7E) {
+					flag = false;
+					break;
+				}
 			}
 		}
-		//Value not found
-		return index;
+		return flag;
 	}
-	
-	//Helper method to calculate the average.
-	private double setAvg()
-	{
-		double sum = 0.0;
-		int i;
-		for(i = 0 ; i < estimate.size() ; i++)
-		{
-			sum += (double)estimate.get(i);
-		}
-		return sum / i;
-	}
+
 }
