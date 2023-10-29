@@ -22,6 +22,7 @@ public class ActivityItem
 		average = 0.0;
 		estimate = new ArrayList<Integer>();
 		criteria = new ArrayList<String>();
+		card = new PokerCard();
 	}
 	
 	ActivityItem(String inName)
@@ -30,12 +31,14 @@ public class ActivityItem
 		average = 0.0;
 		estimate = new ArrayList<Integer>();
 		criteria = new ArrayList<String>();
+		card = new PokerCard();
 	}
 	
 	public void AddEstimate(int input)
 	{
 		estimate.add(input);
 		average = setAvg();
+		updateCard();
 	}
 	
 	public void AddCriteria(String input)
@@ -58,12 +61,22 @@ public class ActivityItem
 		return this.estimate;
 	}
 	
-	public ArrayList<String> getCriteria()
+	public String getCriteria()
 	{
-		return this.criteria;
+		String returnVal = "";
+		if(criteria.isEmpty())
+		{
+			returnVal = "No criteria listed.";
+			return returnVal;
+		}
+		for(int i = 0 ; i < criteria.size() ; i++)
+		{
+			returnVal += "> " + criteria.get(i) + '\n';
+		}
+		return returnVal;
 	}
 	
-	public void createCard()
+	public void updateCard()
 	{
 		int high, low;
 		if(estimate.isEmpty())
@@ -85,7 +98,34 @@ public class ActivityItem
 				low = estimate.get(i);
 			}
 		}
-		this.card = new PokerCard(high, low, average);
+		card.setHighCard(high);
+		card.setLowCard(low);
+		card.setAverage(average);
+	}
+	
+	public PokerCard getCard()
+	{
+		return this.card;
+	}
+	
+	public static int findItem(String input)
+	{
+		int index = -1;
+		if(PPDatabase.isEmpty())
+		{
+			return index;
+		}
+		for(int i = 0 ; i < PPDatabase.size() ; i++)
+		{
+			if(input.equals(PPDatabase.get(i).getName()))
+			{
+				//Value found, exit and return index.
+				index = i;
+				return index;
+			}
+		}
+		//Value not found
+		return index;
 	}
 	
 	private double setAvg()

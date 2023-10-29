@@ -8,7 +8,6 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -70,13 +69,19 @@ public class SceneControllerPP implements Initializable
 	
 	public void pushNewEstimate(ActionEvent event) throws IOException
 	{
+		setActiveItem();
+		if(ActiveItem.equals(null))
+		{
+			return;
+		}
+		
 		int newEstimate = Integer.parseInt(estimateBox.getText());
 		String newCriteriaString = criteriaBox.getText();
 		ActiveItem.AddEstimate(newEstimate);
 		ActiveItem.AddCriteria(newCriteriaString);
-		ActiveItem.createCard();
 		estimateBox.clear();
 		criteriaBox.clear();
+		showActivityItem();
 	}
 	
 	public void updateList() 
@@ -85,11 +90,66 @@ public class SceneControllerPP implements Initializable
 		{
 			return;
 		}
+		activitySelector.getItems().clear();
 		for(int i = 0 ; i < ActivityItem.PPDatabase.size() ; i++)
 		{
 			activitySelector.getItems().add(ActivityItem.PPDatabase.get(i).getName());
 		}
 		
+	}
+	
+	public void showActivityItem() throws IOException
+	{
+		setActiveItem();
+		String newHigh = Integer.toString(ActiveItem.getCard().getHighCard());
+		String newLow = Integer.toString(ActiveItem.getCard().getLowCard());
+		String newAvg = Double.toString(ActiveItem.getCard().getAverage());
+		highCard.setText(newHigh);
+		lowCard.setText(newLow);
+		estimate.setText(newAvg);
+			
+		//Planning Poker Card DONE
+			
+		//Start on Criteria...
+		String newCriteria = ActiveItem.getCriteria();
+		System.out.println(newCriteria);
+		criteriaList.setText(newCriteria);
+		
+	}
+	
+	public void showActivityItem(ActionEvent event) throws IOException
+	{
+		setActiveItem();
+		String newHigh = Integer.toString(ActiveItem.getCard().getHighCard());
+		String newLow = Integer.toString(ActiveItem.getCard().getLowCard());
+		String newAvg = Double.toString(ActiveItem.getCard().getAverage());
+		highCard.setText(newHigh);
+		lowCard.setText(newLow);
+		estimate.setText(newAvg);
+			
+		//Planning Poker Card DONE
+			
+		//Start on Criteria...
+		criteriaList.setText("<No current criteria>");
+		String newCriteria = ActiveItem.getCriteria();
+		System.out.println(newCriteria);
+		criteriaList.setText(newCriteria);
+		
+	}
+	
+	private void setActiveItem()
+	{
+		int index = ActivityItem.findItem(activitySelector.getValue());
+		System.out.println(index);
+		if(index == -1)
+		{
+			ActiveItem = null;
+		}
+		else
+		{
+			//Value found, update items...
+			ActiveItem = ActivityItem.PPDatabase.get(index);
+		}
 	}
 
 	@Override
