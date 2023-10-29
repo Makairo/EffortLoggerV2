@@ -93,9 +93,5 @@ public class User
 		this.rank = nRank;
 	}
 	
-	public void setCodeName(String codeName)
-	{
-		this.username = codeName;
-	}
-
+	
 	
