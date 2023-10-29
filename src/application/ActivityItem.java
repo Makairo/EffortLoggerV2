@@ -126,13 +126,18 @@ public class SQLInjectionHandling {
 
 	}
 
-	public static Boolean ASCIICheck(String s) {
+		public static Boolean ASCIICheck(String s) {
 		//since we are not yet committed to an SQL database, this is
 		//a non-ASCII character checker for any string input
 		boolean flag = true;
+		int length = s.length();
+		//excessive length
+		if (s.length() > 32) {
+			return false;
+		}
 		//if string is null, it's still true as there's no non-ascii chars inside.
 		if (s != null) {
-			for (int i = 0; i < s.length(); i++) {
+			for (int i = 0; i < length; i++) {
 				char c = s.charAt(i);
 				if (c < 0x20 || c > 0x7E) {
 					//if the character at i is not an ascii char, false
