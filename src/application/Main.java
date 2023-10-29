@@ -33,14 +33,18 @@ public class Main extends Application
 	
 	public static void main(String[] args) 
 	{
+		//Pre seed the database with user logins.
+		//Change yours!
 		User.database.add(new User("Jerry","password", 7701, 5));
 		User.database.add(new User("Alice","password", 7702, 5));
 		User.database.add(new User("Kyle","password", 7703, 5));
 		User.database.add(new User("Andrew", "Bandit", 7704, 5));
 		User.database.add(new User("Gavin","password", 7705, 5));
-		//THIS IS CODE FOR JAVA FX IMPLEMENTATION
-		//UNCOMMENT WHEN READY TO IMPLEMENT
+		
 		launch(args);
+		
+		//CODE BELOW IS LAST RESORT CONSOLE IMPLEMENTATION
+		//LOL I LOVE CARTER
 		/*
 		Scanner scanner = new Scanner(System.in);
 		Boolean loggedin = false;

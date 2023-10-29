@@ -2,6 +2,12 @@ package application;
 
 public class riskReductionHandling
 {
+	/*This is the MAIN file for risk reduction prototypes.
+	 * Enter your Prototype methods here, try to keep it modular
+	 * and standalone.
+	 * */
+	
+	
 	//Counter SQL Injection: Jerry
 	
 	//Proper Input Validation: Alice
@@ -9,26 +15,31 @@ public class riskReductionHandling
 	//Restricting Dangerous File Upload: Gavin
 	
 	//Ensuring and Requiring Authentication: Andrew
+	//Helper method
 	public static int RequestRank(User inUser)
 	{
 		return inUser.getRank();
 	}
 	
+	//Helper method
 	public static int RequestId(User inUser)
 	{
 		return inUser.getID();
 	}
 	
+	//Helper method
 	public static Boolean AssertRank(User inUser, int rank) 
 	{
 		return inUser.getRank() == rank;
 	}
 	
+	//Helper method
 	public static Boolean AssertID(User inUser, int ID)
 	{
 		return inUser.getID() == ID;
 	}
 	
+	//Asserts whether the user is valid for the information
 	public static Boolean AssertUser(User inUser, int rank, int ID)
 	{
 		if(!AssertID(inUser, ID) || !AssertRank(inUser, rank))
@@ -38,6 +49,7 @@ public class riskReductionHandling
 		return true;
 	}
 	
+	//Handles user login for the login screen.
 	public static Boolean Login(String username, String password)
 	{
 		int index = User.findUser(username);

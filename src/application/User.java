@@ -2,6 +2,8 @@ package application;
 
 import java.util.ArrayList;
 
+//User class for use with EffortLogger and Planning Poker
+//Collaborators: Andrew Hejl
 public class User
 {
 	private String username;
