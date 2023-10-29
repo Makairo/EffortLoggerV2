@@ -102,7 +102,7 @@ public class SQLInjectionHandling {
 	{
 
 		boolean flag = true;
-
+		//test a name and pwd
 		String username = inUser.getName();
 
 		String pwd = inUser.getPassword();
@@ -110,6 +110,7 @@ public class SQLInjectionHandling {
 		for (int i = 0; i < username.length(); i++) {
 			char c1 = username.charAt(i);
 			char c2 = pwd.charAt(i);
+			//if the pwd or username contains a ', ", or \ it is invalid
 			if (c1 == '\'' || c1 == '\"' || c1 == '\\') {
 				flag = false;
 				break;
@@ -120,17 +121,22 @@ public class SQLInjectionHandling {
 			}
 
 		}
-
+		//return
 		return flag;
 
 	}
 
 	public static Boolean ASCIICheck(String s) {
+		//since we are not yet committed to an SQL database, this is
+		//a non-ASCII character checker for any string input
 		boolean flag = true;
+		//if string is not null
 		if (s != null) {
 			for (int i = 0; i < s.length(); i++) {
 				char c = s.charAt(i);
 				if (c < 0x20 || c > 0x7E) {
+					//if the character at i is not an ascii char, false
+					//else, it's true.
 					flag = false;
 					break;
 				}
