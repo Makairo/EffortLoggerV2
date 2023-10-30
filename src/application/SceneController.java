@@ -6,12 +6,16 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +27,10 @@ public class SceneController
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private String activeCodeName;
+	
+	@FXML
+	public Label userLabel;
 	@FXML
 	public TextField usernameField;
 	@FXML
@@ -31,6 +39,7 @@ public class SceneController
 	public Button loginButton;
 	@FXML
 	public Label loginLabel;
+	
 
 	//Handles the login process.
 	public void switchToMainScreen(ActionEvent event) throws IOException
@@ -43,11 +52,14 @@ public class SceneController
 			//Login
 			if(Authorization.Login(username, password))
 			{
+				activeCodeName = User.database.get(User.findUser(username)).getCodeName();
+				System.out.println(activeCodeName);
 				Parent root = FXMLLoader.load(getClass().getResource("Main.FXML"));
 				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
+				
 			}else
 			{
 				//Invalid login, notify user.
@@ -81,4 +93,5 @@ public class SceneController
 		stage.setScene(scene);
 		stage.show();
 	}
+
 }
