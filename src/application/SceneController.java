@@ -8,7 +8,6 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -44,12 +43,25 @@ public class SceneController
 	//Handles the login process.
 	public void switchToMainScreen(ActionEvent event) throws IOException
 	{
+		InputValidation validate = new InputValidation();
+	    boolean isValid;
+		
 		try
 		{
 			//Parse text from fields.
 			String username = usernameField.getText();
 			String password = passwordField.getText();
 			//Login
+			
+			User currUser = new User(username, password, 0000, 0, "");
+            
+            //Input Validation
+            isValid = validate.returnValidity(currUser);
+            if(isValid == false) {
+                loginLabel.setText("Invalid username type, try again");
+            }
+            //end of Input Validation
+			
 			if(Authorization.Login(username, password))
 			{
 				activeCodeName = User.database.get(User.findUser(username)).getCodeName();
