@@ -46,14 +46,17 @@ public class User
 		username = "NULL USER";
 		ID = 0000000;
 		rank = 0;
+		codeName = "NULL";
 	}
 	
-	User(String nName, String nPassword, int nID, int nRank)
+	User(String nName, String nPassword, int nID, int nRank, String nCodeName)
 	{
 		username = nName;
 		password = nPassword;
 		ID = nID;
 		rank = nRank;
+		codeName = nCodeName;
+		
 	}
 	
 	//Get and set methods...
@@ -77,6 +80,11 @@ public class User
 		return this.rank;
 	}
 	
+	public String getCodeName()
+	{
+		return this.codeName;
+	}
+	
 	public void setName(String nName)
 	{
 		this.username = nName;
@@ -96,5 +104,10 @@ public class User
 	{
 		this.rank = nRank;
 	}
+	public void setCodeName(String nCodeName)
+	{
+		this.codeName = nCodeName;
+	}
+	
 
 }
