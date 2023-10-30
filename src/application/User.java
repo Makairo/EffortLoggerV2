@@ -10,6 +10,7 @@ public class User
 	private String password;
 	private int ID;
 	private int rank;
+	private String codeName;
 	
 	//Standin database instead of SQL.
 	public static ArrayList<User> database = new ArrayList<User>();
