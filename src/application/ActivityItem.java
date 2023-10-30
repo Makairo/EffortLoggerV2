@@ -46,9 +46,14 @@ public class ActivityItem
 	//Add criteria.
 	public void AddCriteria(String input)
 	{
-		criteria.add(input);
+		boolean flag = SQLInjectionHandling.ASCIICheck(input);
+		if(flag == true) {
+			criteria.add(input);
+		}
+		else {
+		criteria.add("Invalid Input - Non ASCII");
+		}
 	}
-	
 	//Getters and setters.
 	public String getName()
 	{
