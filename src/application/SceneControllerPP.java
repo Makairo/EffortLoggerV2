@@ -1,4 +1,4 @@
-/*Controller for EffortLogger JavaFX.
+*Controller for EffortLogger JavaFX.
  * This controls the .
  * Collaborators: Andrew Hejl
  * 		-Initial commit 
@@ -7,6 +7,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -39,6 +40,8 @@ public class SceneControllerPP implements Initializable
 	public Button newItemButton;
 	@FXML
 	public Button newEstimateButton;
+	@FXML
+    public Button searchButton;
 	@FXML
 	public Label highCard;
 	@FXML
@@ -165,6 +168,19 @@ public class SceneControllerPP implements Initializable
 		}
 	}
 
+	public void searchBacklogItems(ActionEvent event) throws IOException {
+        // Example usage
+		System.out.println("Searching Backlog Items...");
+        String itemName = "Example Item";
+        int targetEstimate = 5;
+
+        List<ActivityItem> foundItems = BacklogItem.searchItems(itemName, targetEstimate);
+
+        // Display the details of the found items using BacklogItem.displayItemDetails
+        for (ActivityItem item : foundItems) {
+            BacklogItem.displayItemDetails(item);
+        }
+    }
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
