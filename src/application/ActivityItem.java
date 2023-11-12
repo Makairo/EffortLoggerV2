@@ -51,7 +51,7 @@ public class ActivityItem
 			criteria.add(input);
 		}
 		else {
-		criteria.add("Invalid Input - Non ASCII");
+			System.out.println("Invalid Input - Non ASCII or Excessive Length");
 		}
 	}
 	//Getters and setters.
