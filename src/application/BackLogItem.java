@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BacklogItem {
-
+//Author: Kyle Navratil
+    
     // Method to search for items in the backlog system by name and estimates
     public static List<ActivityItem> searchItems(String itemName, int targetEstimate) {
         List<ActivityItem> foundItems = new ArrayList<>();
 
         // Loop through all items in the database
         for (ActivityItem item : ActivityItem.PPDatabase) {
-            // Check if the item name matches
+           
             if (item.getName().equals(itemName)) {
                 // Check if the target estimate is present in the estimates list
                 if (item.getEstimates().contains(targetEstimate)) {
-                    // Add the found item to the list
+                   
                     foundItems.add(item);
                 }
             }
