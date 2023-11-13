@@ -3,7 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BacklogItem {
+public class BackLogItem {
 //Author: Kyle Navratil
     
     // Method to search for items in the backlog system by name and estimates

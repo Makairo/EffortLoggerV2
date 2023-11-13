@@ -1,4 +1,5 @@
-*Controller for EffortLogger JavaFX.
+/*
+ * Controller for EffortLogger JavaFX.
  * This controls the .
  * Collaborators: Andrew Hejl
  * 		-Initial commit 
@@ -174,11 +175,11 @@ public class SceneControllerPP implements Initializable
         String itemName = "Example Item";
         int targetEstimate = 5;
 
-        List<ActivityItem> foundItems = BacklogItem.searchItems(itemName, targetEstimate);
+        List<ActivityItem> foundItems = BackLogItem.searchItems(itemName, targetEstimate);
 
         // Display the details of the found items using BacklogItem.displayItemDetails
         for (ActivityItem item : foundItems) {
-            BacklogItem.displayItemDetails(item);
+            BackLogItem.displayItemDetails(item);
         }
     }
 	@Override

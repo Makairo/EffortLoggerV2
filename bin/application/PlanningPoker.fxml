@@ -83,5 +83,7 @@
          </font>
       </Label>
       <Button layoutX="33.0" layoutY="127.0" mnemonicParsing="false" onAction="#showActivityItem" text="Show" />
+      <Button fx:id="searchButton" layoutX="33.0" layoutY="300.0" mnemonicParsing="false" onAction="#searchBacklogItems" text="Search Backlog Items" />
    </children>
 </AnchorPane>
+
