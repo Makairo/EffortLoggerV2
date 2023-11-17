@@ -1,6 +1,6 @@
 /*Controller for EffortLogger JavaFX.
  * This controls the Login.FXML and Main.FXML files.
- * Collaborators: Andrew Hejl
+ * Collaborators: Andrew Hejl, Kyle Navratil
  * 		-Initial commit 
  * */
 package application;
@@ -62,21 +62,21 @@ public class SceneController
             }
             //end of Input Validation
 			
-			if(Authorization.Login(username, password))
-			{
-				activeCodeName = User.database.get(User.findUser(username)).getCodeName();
-				System.out.println(activeCodeName);
-				Parent root = FXMLLoader.load(getClass().getResource("Main.FXML"));
-				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-				scene = new Scene(root);
-				stage.setScene(scene);
-				stage.show();
-				
-			}else
-			{
-				//Invalid login, notify user.
-				loginLabel.setText("Invalid Username / Password");
-			}
+            if (Authorization.Login(username, password)) {
+                activeCodeName = User.database.get(User.findUser(username)).getCodeName();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.FXML"));
+                Parent root = loader.load();
+                SceneController mainController = loader.getController();
+                mainController.setActiveCodeName(activeCodeName);
+
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                // Invalid login, notify user.
+                loginLabel.setText("Invalid Username / Password");
+            }
 		}catch(Exception e)
 		{
 			System.out.println(e);
@@ -84,6 +84,11 @@ public class SceneController
 		
 	}
 	
+	// Sets the users active code name
+	  public void setActiveCodeName(String codeName) {
+	        userLabel.setText("Logged in as: " + codeName);
+	    }
+	  
 	//Handles the logout process.
 	public void switchToLoginScreen(ActionEvent event) throws IOException
 	{
