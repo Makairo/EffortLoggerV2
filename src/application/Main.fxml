@@ -21,7 +21,7 @@
       <Text layoutX="93.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project:" />
       <Text layoutX="364.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step" />
       <Text layoutX="93.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category" />
-      <Button fx:id="EndButton" layoutX="62.0" layoutY="322.0" mnemonicParsing="false" onAction="#EndLog" text="Stop This Activity" />
+      <Button fx:id="EndButton" layoutX="59.0" layoutY="323.0" mnemonicParsing="false" onAction="#EndLog" text="Stop This Activity" />
       <Button layoutX="20.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToPlanningPoker" text="Planning Poker" />
       <Button layoutX="532.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToLoginScreen" text="Logout" />
       <Label fx:id="userLabel" layoutX="261.0" layoutY="48.0" text="Logged in as: ">
