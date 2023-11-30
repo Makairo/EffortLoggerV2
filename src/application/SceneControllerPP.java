@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +52,12 @@ public class SceneControllerPP implements Initializable
 	public Label estimate;
 	@FXML
 	public Label criteriaList;
+	@FXML
+	public Text criteriaLabel;
+	@FXML
+	public Button effortLogs;
+	@FXML
+	public Button defectLogs;
 	
 	
 	//Method to return to main application screen.
@@ -70,6 +77,23 @@ public class SceneControllerPP implements Initializable
 		ActivityItem.PPDatabase.add(new ActivityItem(input));
 		newItemBox.clear();
 		updateList();
+	}
+	
+	public void showEffortLogs(ActionEvent event) throws IOException
+	{
+		criteriaLabel.setText("Effort Logs");
+		String newCriteria = Log.getEffortLogs();
+		System.out.println(newCriteria);
+		criteriaList.setText(newCriteria);
+	}
+	
+	public void showDefectLogs(ActionEvent event) throws IOException
+	{
+		criteriaLabel.setText("Defect Logs");;
+		String newCriteria = Log.getDefectLogs();
+		System.out.println(newCriteria);
+		criteriaList.setText(newCriteria);
+
 	}
 	
 	//Push New Estimate button handler
@@ -110,6 +134,7 @@ public class SceneControllerPP implements Initializable
 	{
 		//Get the Active Item to be displayed.
 		setActiveItem();
+		criteriaLabel.setText("Criteria List");
 		
 		//Conversions, set values.
 		String newHigh = Integer.toString(ActiveItem.getCard().getHighCard());

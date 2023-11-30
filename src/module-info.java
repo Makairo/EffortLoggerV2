@@ -7,4 +7,5 @@ module EffortLoggerV2 {
 	requires junit;
 	requires javafx.controls;
 	requires transitive java.sql;
+	requires org.junit.jupiter.api;
 }

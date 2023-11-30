@@ -3,6 +3,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class User
 {
@@ -13,14 +14,23 @@ public class User
 	private String codeName;
 	
 	//Standin database instead of SQL.
-	public static ArrayList<User> database = new ArrayList<User>();
+	//Pre seed the database with user logins.
+			//Change yours!
+	static User u0 = new User("****", "****", 0000, 0, "EMP000");
+	static User u1 = new User("Jerry","password", 7701, 5, "EMP123");
+	static User u2 = new User("Alice","password", 7702, 5, "EMP124");
+	static User u3 = new User("Kyle","Titan", 7703, 5, "EMP125");
+	static User u4 = new User("Andrew", "Bandit", 7704, 5, "EMP126");
+	static User u5 = new User("Gavin","password", 7705, 5, "EMP127");
+	public static ArrayList<User> database = new ArrayList<User>(List.of(u1, u2, u3, u4, u5));
 	
 	//toString override
 	public String toString()
 	{
 		return "Username: " + username 
 			 + "; Password: " + password
-			 + "; User ID: " + ID;
+			 + "; User ID: " + ID
+			 + "; Rank: " + rank + "\n";
 	}
 	
 	//Access for the temporary database.
@@ -32,6 +42,7 @@ public class User
 			{
 				return i;
 			}
+			
 		}
 		return -1;
 	}
@@ -109,5 +120,4 @@ public class User
 		this.codeName = nCodeName;
 	}
 	
-
 }

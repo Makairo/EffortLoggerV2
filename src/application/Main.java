@@ -32,17 +32,7 @@ public class Main extends Application
 	
 	public static void main(String[] args) 
 	{
-		//Pre seed the database with user logins.
-		//Change yours!
-		User.database.add(new User("Jerry","password", 7701, 5, "EMP123"));
-		User.database.add(new User("Alice","password", 7702, 5, "EMP124"));
-		User.database.add(new User("Kyle","Titan", 7703, 5, "EMP125"));
-		User.database.add(new User("Andrew", "Bandit", 7704, 5, "EMP126"));
-		User.database.add(new User("Gavin","password", 7705, 5, "EMP127"));
-		
 		launch(args);
-		
-		
 	}
 	
 	
