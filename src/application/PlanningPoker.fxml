@@ -61,12 +61,6 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="criteriaList" layoutX="241.0" layoutY="106.0" text="&lt;No Current Criteria&gt;" />
-      <Text fx:id="criteriaLabel" layoutX="239.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Criteria">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
       <Label fx:id="highCard" layoutX="497.0" layoutY="110.0" text="0">
          <font>
             <Font size="18.0" />
@@ -86,5 +80,11 @@
       <Button fx:id="searchButton" layoutX="33.0" layoutY="300.0" mnemonicParsing="false" onAction="#searchBacklogItems" text="Search Backlog Items" />
       <Button fx:id="effortLogs" layoutX="274.0" layoutY="361.0" mnemonicParsing="false" onAction="#showEffortLogs" text="View Effort Logs" />
       <Button fx:id="defectLogs" layoutX="406.0" layoutY="361.0" mnemonicParsing="false" onAction="#showDefectLogs" text="View Defect Logs" />
+      <Text fx:id="criteriaLabel" layoutX="239.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Criteria">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="criteriaList" layoutX="241.0" layoutY="79.0" maxWidth="200.0" text="&lt;No Current Criteria&gt;" wrapText="true" />
    </children>
 </AnchorPane>

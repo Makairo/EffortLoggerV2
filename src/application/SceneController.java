@@ -217,7 +217,10 @@ public class SceneController implements Initializable
 			stage.setScene(scene);
 			stage.show();
 		}
-		
+		else
+		{
+			System.out.println("Insufficient Permissions.");
+		}
 	}
 	
 	//Updates the lists to reflect alternate values

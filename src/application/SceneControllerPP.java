@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
@@ -58,6 +60,7 @@ public class SceneControllerPP implements Initializable
 	public Button effortLogs;
 	@FXML
 	public Button defectLogs;
+
 	
 	
 	//Method to return to main application screen.
@@ -85,6 +88,7 @@ public class SceneControllerPP implements Initializable
 		String newCriteria = Log.getEffortLogs();
 		System.out.println(newCriteria);
 		criteriaList.setText(newCriteria);
+		mainPaneUpdate();
 	}
 	
 	public void showDefectLogs(ActionEvent event) throws IOException
@@ -93,7 +97,7 @@ public class SceneControllerPP implements Initializable
 		String newCriteria = Log.getDefectLogs();
 		System.out.println(newCriteria);
 		criteriaList.setText(newCriteria);
-
+		mainPaneUpdate();
 	}
 	
 	//Push New Estimate button handler
@@ -150,7 +154,7 @@ public class SceneControllerPP implements Initializable
 		String newCriteria = ActiveItem.getCriteria();
 		System.out.println(newCriteria);
 		criteriaList.setText(newCriteria);
-		
+		mainPaneUpdate();
 	}
 	
 	//Helper method to display values associated with the Planning Poker Card.
@@ -171,9 +175,11 @@ public class SceneControllerPP implements Initializable
 		//Planning Poker Card DONE
 					
 		//Start on Criteria...
+		criteriaLabel.setText("Criteria List");
 		String newCriteria = ActiveItem.getCriteria();
 		System.out.println(newCriteria);
 		criteriaList.setText(newCriteria);
+		mainPaneUpdate(); 
 		
 	}
 	
@@ -207,10 +213,15 @@ public class SceneControllerPP implements Initializable
             BackLogItem.displayItemDetails(item);
         }
     }
+	
+	public void mainPaneUpdate() 
+	{
+		
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

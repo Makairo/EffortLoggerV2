@@ -42,7 +42,7 @@ public class DefectLog extends Log
 	
 	public String toString()
 	{
-		return "Effort Log[" + this.getID() +"]:\n" +
+		return "Defect Log[" + this.getID() +"]:\n" +
 		"Project: " + this.getProject() + "\n" +
 		"Life Cycle Step: " + this.getLCS() + "\n" +
 		"Resolved?: " + this.isResolved() + "\n" +
