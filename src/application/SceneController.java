@@ -268,6 +268,8 @@ public class SceneController implements Initializable
 		
 	}
 	
+	//Updates the lists to reflect alternate values
+	//Overload for FX event
 	public void UpdateLists(ActionEvent event) throws IOException
 	{
 		if(event.getSource().equals(ProjectBox))
